@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace XnaUtility
 {
-    static class MathAndCollisions
+    public static class UtilityMethods
     {
         public static Vector2 TexturesCollide(Color[,] tex1, Matrix mat1, Color[,] tex2, Matrix mat2)
         {
@@ -28,20 +28,12 @@ namespace XnaUtility
                     Vector2 pos2 = Vector2.Transform(pos1, mat1to2);
                     int x2 = (int)pos2.X;
                     int y2 = (int)pos2.Y;
-                    if ((x2 >= 0) && (x2 < width2))
-                    {
-                        if ((y2 >= 0) && (y2 < height2))
-                        {
-                            if (tex1[x1, y1].A > 0)
-                            {
-                                if (tex2[x2, y2].A > 0)
-                                {
-                                    Vector2 screenPos = Vector2.Transform(pos1, mat1);
-                                    return screenPos;
-                                }
-                            }
-                        }
-                    }
+                    if ((x2 < 0) || (x2 >= width2)) continue;
+                    if ((y2 < 0) || (y2 >= height2)) continue;
+                    if (tex1[x1, y1].A <= 0) continue;
+                    if (tex2[x2, y2].A <= 0) continue;
+                    Vector2 screenPos = Vector2.Transform(pos1, mat1);
+                    return screenPos;
                 }
             }
             return new Vector2(-1, -1);
@@ -69,6 +61,10 @@ namespace XnaUtility
             return colors2D;
         }
 
-
+        public static bool ClickPress(this KeyboardState state, KeyboardState previousState, Keys key)
+        {
+            return state.IsKeyDown(key) &&
+                   previousState.IsKeyUp(key);
+        }
     }
 }

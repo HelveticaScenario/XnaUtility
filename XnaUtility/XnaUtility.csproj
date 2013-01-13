@@ -59,7 +59,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MathAndCollisions.cs" />
+    <Compile Include="UtilityMethods.cs" />
     <Compile Include="Debug\WatchItem.cs" />
     <Compile Include="Debug\XNAWatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

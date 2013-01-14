@@ -13,6 +13,7 @@ namespace XnaUtility
 {
     public static class UtilityMethods
     {
+        public static Game CurrentGame = null;
         public static Vector2 TexturesCollide(Color[,] tex1, Matrix mat1, Color[,] tex2, Matrix mat2)
         {
             int width1 = tex1.GetLength(0);

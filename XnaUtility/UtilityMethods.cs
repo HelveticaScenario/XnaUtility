@@ -67,5 +67,31 @@ namespace XnaUtility
             return state.IsKeyDown(key) &&
                    previousState.IsKeyUp(key);
         }
+        public static void MoveVector2WASD(ref Vector2 pos, ref Rectangle boundingRect)
+        {
+            var keyboard = Keyboard.GetState();
+            if (keyboard.IsKeyDown(Keys.A))
+            {
+                pos.X -= 2;
+                boundingRect.Offset(-1,0);
+            }
+            else if (keyboard.IsKeyDown(Keys.D))
+            {
+                pos.X += 2;
+                boundingRect.Offset(1, 0);
+
+            }
+            if (keyboard.IsKeyDown(Keys.W))
+            {
+                pos.Y -= 2;
+                boundingRect.Offset(0, -1);
+
+            }
+            else if (keyboard.IsKeyDown(Keys.S))
+            {
+                boundingRect.Offset(0, 1);
+                pos.Y += 2;
+            }
+        }
     }
 }

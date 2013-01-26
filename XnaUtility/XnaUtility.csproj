@@ -59,6 +59,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AtlasHandler.cs" />
     <Compile Include="UtilityMethods.cs" />
     <Compile Include="Debug\WatchItem.cs" />
     <Compile Include="Debug\XNAWatch.cs" />
